@@ -62,6 +62,7 @@ def games_done():
         cursor.close()
         
         return render_template("done.html")
+
 # use add_genre form to insert data to database
 @app.route('/add_genre_done', methods = ['POST', 'GET'])
 def genre_done():
@@ -74,6 +75,54 @@ def genre_done():
         cursor = mysql.connection.cursor()
         cursor.execute("USE database_games")
         cursor.execute(''' INSERT INTO genre VALUES(%s,%s)''',(genre_id, genre))
+        mysql.connection.commit()
+        cursor.close()
+        return render_template("done.html")
+
+# use add_developer form to insert data to database
+@app.route('/add_developer_done', methods = ['POST', 'GET'])
+def developer_done():
+    if request.method == 'GET':
+        return "error"
+     
+    if request.method == 'POST':
+        dev_id = request.form['dev_id']
+        developer = request.form['developer']
+        cursor = mysql.connection.cursor()
+        cursor.execute("USE database_games")
+        cursor.execute(''' INSERT INTO developer VALUES(%s,%s)''',(dev_id, developer))
+        mysql.connection.commit()
+        cursor.close()
+        return render_template("done.html")
+
+# use add_platform form to insert data to database
+@app.route('/add_platform_done', methods = ['POST', 'GET'])
+def platform_done():
+    if request.method == 'GET':
+        return "error"
+     
+    if request.method == 'POST':
+        platform_id = request.form['platform_id']
+        platform = request.form['platform']
+        cursor = mysql.connection.cursor()
+        cursor.execute("USE database_games")
+        cursor.execute(''' INSERT INTO platform VALUES(%s,%s)''',(platform_id, platform))
+        mysql.connection.commit()
+        cursor.close()
+        return render_template("done.html")
+
+# use add_publisher form to insert data to database
+@app.route('/add_publisher_done', methods = ['POST', 'GET'])
+def publisher_done():
+    if request.method == 'GET':
+        return "error"
+     
+    if request.method == 'POST':
+        pub_id = request.form['pub_id']
+        publisher = request.form['publisher']
+        cursor = mysql.connection.cursor()
+        cursor.execute("USE database_games")
+        cursor.execute(''' INSERT INTO publisher VALUES(%s,%s)''',(pub_id, publisher))
         mysql.connection.commit()
         cursor.close()
         return render_template("done.html")
