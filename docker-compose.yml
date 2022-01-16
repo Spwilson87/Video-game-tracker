@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  dbsql:
+    image: mysql:latest    
+    container_name: dbsql
+
+    environment:
+      MYSQL_DATABASE: database_games
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: userpass
+    ports:
+      - "5506:3306"
+
+    volumes:
+      - dbdatagames:/var/lib/mysql
+
+  pma:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+
+    environment:
+      PMA_HOST: dbsql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+
+    ports:
+      - 8080:80
+
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./webapp/:/usr/db_games
+
+    ports:
+      - 5000:5000
+
+    
+
+volumes:
+  dbdatagames:
+  

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Clompeted Games {% endblock %}
+
+  <body>
+    {% block content %}
+    <div class="container">
+      <img src="{{url_for('static', filename='turtle.jpg')}}" align="middle" />
+      <br>
+      <p>Enter Your Details<p></p>
+    </div>
+      
+    <form action="/done" method = "POST">
+      <p>first_name <input type = "text" name = 'first_name' /></p>
+      <p>last_name <input type = "text" name = 'last_name' /></p>
+      <p>age <input type = "integer" name = 'age' /></p>
+      <p><input type = "submit" value = "Submit" /></p>
+    </form>
+    {% endblock %}
+  </body>
+</html>
