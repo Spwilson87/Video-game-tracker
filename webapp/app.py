@@ -42,11 +42,12 @@ def publisher():
     return render_template("add_publisher.html")
 #use add_games form to insert data to database
 @app.route('/add_games_done', methods = ['POST', 'GET'])
-def login():
+def games_done():
     if request.method == 'GET':
         return "error"
      
     if request.method == 'POST':
+        
         game_id = request.form['game_id']
         game_name = request.form['game_name']
         release_year = request.form['release_year']
@@ -56,26 +57,26 @@ def login():
         genre_id = request.form['genre_id']
         cursor = mysql.connection.cursor()
         cursor.execute("USE database_games")
-        cursor.execute(''' INSERT INTO games VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id,game_name, release_year, pub_id, dev_id, platform_id, genre_id))
+        cursor.execute(''' INSERT INTO games VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, pub_id, dev_id, platform_id, genre_id))
+        mysql.connection.commit()
+        cursor.close()
+        
+        return render_template("done.html")
+# use add_genre form to insert data to database
+@app.route('/add_genre_done', methods = ['POST', 'GET'])
+def genre_done():
+    if request.method == 'GET':
+        return "error"
+     
+    if request.method == 'POST':
+        genre_id = request.form['genre_id']
+        genre = request.form['genre']
+        cursor = mysql.connection.cursor()
+        cursor.execute("USE database_games")
+        cursor.execute(''' INSERT INTO genre VALUES(%s,%s)''',(genre_id, genre))
         mysql.connection.commit()
         cursor.close()
         return render_template("done.html")
-# use add_genre form to insert data to database
-# @app.route('/add_genre_done', methods = ['POST', 'GET'])
-# def login():
-#     if request.method == 'GET':
-#         return "error"
-     
-#     if request.method == 'POST':
-#         first_name = request.form['first_name']
-#         last_name = request.form['last_name']
-#         age = request.form['age']
-#         cursor = mysql.connection.cursor()
-#         cursor.execute("USE database_games")
-#         cursor.execute(''' INSERT INTO people VALUES(%s,%s,%s)''',(first_name, last_name, age))
-#         mysql.connection.commit()
-#         cursor.close()
-#         return render_template("done.html")
 
 
 if __name__ == '__main__':
