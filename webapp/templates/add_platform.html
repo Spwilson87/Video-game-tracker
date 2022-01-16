@@ -9,10 +9,9 @@
       <p>Enter Your Details<p></p>
     </div>
       
-    <form action="/done" method = "POST">
-      <p>first_name <input type = "text" name = 'first_name' /></p>
-      <p>last_name <input type = "text" name = 'last_name' /></p>
-      <p>age <input type = "integer" name = 'age' /></p>
+    <form action="/add_platform_done" method = "POST">
+      <p>Enter Platform Id As 0 <input type = "integer" name = 'platform_id' /></p>
+      <p>Enter Platform <input type = "text" name = 'platform' /></p>
       <p><input type = "submit" value = "Submit" /></p>
     </form>
     {% endblock %}
