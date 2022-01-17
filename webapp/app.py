@@ -39,9 +39,9 @@ def games():
 def genre():
     return render_template("add_genre.html")
 
-@app.route('/add_platform')
+@app.route('/checkbox')
 def platform():
-    return render_template("add_platform.html")
+    return render_template("checkbox.html")
  
 @app.route('/add_publisher')
 def publisher():
@@ -69,13 +69,13 @@ def games_done():
         cursor = mysql.connection.cursor()
         cursor.execute("USE database_games")
         cursor.execute(''' INSERT INTO Games VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
-        if own == "y":
+        if own == "1":
             cursor.execute(''' INSERT INTO Games_Owned VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
-        if wish == "y":
+        if wish == "1":
             cursor.execute(''' INSERT INTO Games_Wishlist VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
-        if play == "y":
+        if play == "1":
             cursor.execute(''' INSERT INTO Games_Playing VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
-        if completed == "y":
+        if completed == "1":
             cursor.execute(''' INSERT INTO Games_Completed VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
 
         mysql.connection.commit()
