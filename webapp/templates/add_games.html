@@ -13,12 +13,25 @@
       <p>Enter Game Id As 0 <input type = "integer" name = 'game_id' /></p>
       <p>Enter Game Name <input type = "text" name = 'game_name' /></p>
       <p>Enter Release Year <input type = "integer" name = 'release_year' /></p>
-      <p>Enter Publisher ID <input type = "integer" name = 'pub_id' /></p>
-      <p>Enter Developer ID <input type = "integer" name = 'dev_id' /></p>
-      <p>Enter Platform ID <input type = "integer" name = 'platform_id' /></p>
-      <p>Enter Genre ID <input type = "integer" name = 'genre_id' /></p>
+      <p>Enter Genre <input type = "text" name = 'genre' /></p>
+      <p>Enter Developer <input type = "text" name = 'dev' /></p>
+      <p>Enter Publisher <input type = "text" name = 'pub' /></p>
+      <p>Enter Platform<input type = "text" name = 'platform' /></p>
+      
+      <p>Do You Own This Game? y/n <input type = "text" name = 'own' /></p>
+      <p>Do You Want To Add To Wishlist? y/n <input type = "text" name = 'wish' /></p>
+      <p>Are You In Playing This Game At The Moment? y/n <input type = "text" name = 'play' /></p>
+      <p>Have You Completed This Game? y/n <input type = "text" name = 'comp' /></p>
       <p><input type = "submit" value = "Submit" /></p>
     </form>
+    
+    
     {% endblock %}
+    <div class="w3-display-middle">
+      <h1> {{ message }} </h1>
+      <div style="text-align: center;">
+          <h1><a href="/login">back</a></h1>
+      </div>
+  </div>
   </body>
 </html>
