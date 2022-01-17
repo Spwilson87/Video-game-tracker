@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block title %} Add_Game {% endblock %}
 
+<style>
+  
+  p {
+    font-size: 14px;
+  }
+  </style>
   <body>
     {% block content %}
     <div class="container">
@@ -8,15 +14,26 @@
       <br>
       <p>Enter Your Game Details<p></p>
     </div>
-      
+    
     <form action="/add_games_done" method = "POST">
-      <p>Enter Game Id As 0 <input type = "integer" name = 'game_id' /></p>
-      <p>Enter Game Name <input type = "text" name = 'game_name' /></p>
-      <p>Enter Release Year <input type = "integer" name = 'release_year' /></p>
-      <p>Enter Genre <input type = "text" name = 'genre' /></p>
-      <p>Enter Developer <input type = "text" name = 'dev' /></p>
-      <p>Enter Publisher <input type = "text" name = 'pub' /></p>
-      <p>Enter Platform<input type = "text" name = 'platform' /></p>
+      <p>Game Id = 0</p>
+      <select class="w3-select w3-border " name="game_id">
+        <option value="0">0</option>
+        <
+        
+      </select>
+      <p>Enter Game Name </p>
+      <p><input type = "text" name = 'game_name' /></p>
+      <p>Enter Release Year </p>
+      <p><input type = "integer" name = 'release_year' /></p>
+      <p>Enter Genre </p>
+      <p><input type = "text" name = 'genre' /></p>
+      <p>Enter Developer </p>
+      <p><input type = "text" name = 'dev' /></p>
+      <p>Enter Publisher </p>
+      <p><input type = "text" name = 'pub' /></p>
+      <p>Enter Platform</p>
+      <p><input type = "text" name = 'platform' /></p>
       
       <p>Do You Own This Game? 
         <select class="w3-select w3-border " name="own">
@@ -53,9 +70,9 @@
     
     {% endblock %}
     <div class="w3-display-middle">
-      <h1> {{ message }} </h1>
+      <p> {{ message }} </p>
       <div style="text-align: center;">
-          <h1><a href="/login">back</a></h1>
+          <p><a href="/login">back</a></p>
       </div>
   </div>
   </body>
