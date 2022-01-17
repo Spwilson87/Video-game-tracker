@@ -1,3 +1,4 @@
+from email.mime import message
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 
@@ -27,6 +28,11 @@ def completed():
 
 @app.route('/add_games')
 def games():
+    cursor = mysql.connection.cursor()
+    cursor.execute("USE database_games")
+    #cursor.execute("SELECT * FROM platform")
+    #result_platform = cursor.fetchall()
+    #return (str(result_platform))
     return render_template("add_games.html")
 
 @app.route('/add_genre')
@@ -51,13 +57,27 @@ def games_done():
         game_id = request.form['game_id']
         game_name = request.form['game_name']
         release_year = request.form['release_year']
-        pub_id = request.form['pub_id']
-        dev_id = request.form['dev_id']
-        platform_id = request.form['platform_id']
-        genre_id = request.form['genre_id']
+        genre = request.form['genre']
+        developer = request.form['dev']
+        publisher = request.form['pub']
+        platform = request.form['platform']
+        own = request.form['own']
+        wish = request.form['wish']
+        play = request.form['play']
+        completed = request.form['comp']
+
         cursor = mysql.connection.cursor()
         cursor.execute("USE database_games")
-        cursor.execute(''' INSERT INTO games VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, pub_id, dev_id, platform_id, genre_id))
+        cursor.execute(''' INSERT INTO Games VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
+        if own == "y":
+            cursor.execute(''' INSERT INTO Games_Owned VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
+        if wish == "y":
+            cursor.execute(''' INSERT INTO Games_Wishlist VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
+        if play == "y":
+            cursor.execute(''' INSERT INTO Games_Playing VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
+        if completed == "y":
+            cursor.execute(''' INSERT INTO Games_Completed VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
+
         mysql.connection.commit()
         cursor.close()
         
