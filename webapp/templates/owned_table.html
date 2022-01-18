@@ -1,0 +1,46 @@
+{% extends "table_base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>game_id</th>
+        <th>game_name</th>
+        <th>release_year</th>
+        <th>genre</th>
+        <th>developer</th>
+        <th>publisher</th>
+        <th>platform</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for own in owned %}
+        <tr>
+          <td>{{ own.game_id }}</td>
+          <td>{{ own.game_name }}</td>
+          <td>{{ own.release_year }}</td>
+          <td>{{ own.genre }}</td>
+          <td>{{ own.developer }}</td>
+          <td>{{ own.publisher }}</td>
+          <td>{{ own.platform }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({pageLength: 10,
+    filter: true,
+    deferRender: true,
+    scrollY: 200,
+    scrollCollapse: true,
+    scroller: true,
+    "searching": true,
+        
+      });
+    });
+  </script>
+{% endblock %}
