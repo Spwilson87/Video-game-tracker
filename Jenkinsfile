@@ -11,11 +11,11 @@ pipeline {
         stage ('test') {
             steps{
                 echo 'Test stage executed.'
-                sh 'docker exec -it dbsql bash -l'
-                sh 'mysql -u root -proot'
-                sh 'use database_games'
-                sh 'show tables;'
-                sh 'describe Games;'
+                sh 'docker exec -i dbsql bash -l'
+                   'mysql -u root -proot'
+                   'use database_games'
+                   'show tables;'
+                   'describe Games;'
             }
         }
 
