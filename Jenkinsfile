@@ -11,7 +11,7 @@ pipeline {
         stage ('test') {
             steps{
                 echo 'Test stage executed.'
-                sh 'docker-compose exec -T dbsql bash'
+                sh 'docker exec -it dbsql bash -l'
                 sh 'mysql -u root -proot'
                 sh 'use database_games'
                 sh 'show tables;'
