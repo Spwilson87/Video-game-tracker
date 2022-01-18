@@ -1,4 +1,3 @@
-from email.mime import message
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 
@@ -59,6 +58,13 @@ def games_done():
         
         return render_template("done.html")
 
+@app.route('/owned_table')
+def owned():
+    cursor = mysql.connection.cursor()
+    cursor.execute("USE database_games")
+    cursor.execute(''' Select * From Games_Owned ''')
+    owned = cursor.fetchall()
+    return render_template('owned_table.html', title='Owned Games', owned=owned)
 
 if __name__ == '__main__':
    app.run(host='0.0.0.0', debug=True)
