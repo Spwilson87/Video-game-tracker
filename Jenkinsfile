@@ -5,17 +5,14 @@ pipeline {
         stage ('build') {
             steps{
                 sh 'docker-compose -f /var/lib/jenkins/workspace/DB_Games_dev/docker-compose.yml up --build -d'
+                echo 'Build Stage Completed'
             }
         }
 
         stage ('test') {
             steps{
                 echo 'Test stage executed.'
-                sh 'docker exec --tty dbsql /bin/bash'
-                sh 'mysql -u root -proot'
-                sh 'use database_games'
-                sh 'show tables;'
-                sh 'describe Games;'
+                
             }
         }
 
