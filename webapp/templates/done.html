@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block title %} Done {% endblock %}
   <body>
+    {% block bar %}
+      
+    {% endblock %}
     {% block content %}
     <div class="container fixed">
-      <img src="{{url_for('static', filename='link.jpg')}}" align="middle" />
+      <img src="{{url_for('static', filename='link.jpg')}}" align="middle" alt="image load error" />
       <br>
       DATA HAS BEEN ENTERED
     </div>
