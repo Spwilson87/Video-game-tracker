@@ -27,6 +27,12 @@
       {% endfor %}
     </tbody>
   </table>
+  <form action="/move_game_done" method = "POST">
+
+    <p>Enter Game ID to Move to Games Owned </p>
+    <p><input type = "integer" name = 'game_id' /></p>
+    <p><input type = "submit" value = "Submit" /></p>
+  </form>
 {% endblock %}
 
 {% block scripts %}
