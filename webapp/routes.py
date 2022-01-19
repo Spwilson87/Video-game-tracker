@@ -49,6 +49,8 @@ def games_done():
 
         return render_template("done.html")
 
+# route which moves selected data using game id from the wishlist table to the owned games table, it then deletes the record from wishlist table
+
 @add_game.route('/move_game_done', methods = ['POST', 'GET'])
 def move_done():
     if request.method == 'GET':
@@ -62,6 +64,44 @@ def move_done():
         cursor.execute("USE database_games")
         cursor.execute('''INSERT INTO `Games_Owned`(`game_name`, `release_year`, `genre`, `developer`, `publisher`, `platform`) SELECT `game_name`, `release_year`, `genre`, `developer`, `publisher`, `platform` FROM `Games_Wishlist` WHERE game_id = %s;''',(game_id,))
         cursor.execute('''DELETE FROM `Games_Wishlist` WHERE game_id = %s;''',(game_id,))
+        mysql.connection.commit()
+        cursor.close()
+            
+        return render_template("done.html")
+
+# route which moves selected data using game id from the playing table to the completed games table, it then deletes the record from playing table
+
+@add_game.route('/move_playing_game_done', methods = ['POST', 'GET'])
+def move_playing_done():
+    if request.method == 'GET':
+        return "error"
+     
+    if request.method == 'POST':
+        
+        game_id = request.form['game_id']
+
+        cursor = mysql.connection.cursor()
+        cursor.execute("USE database_games")
+        cursor.execute('''INSERT INTO `Games_Completed`(`game_name`, `release_year`, `genre`, `developer`, `publisher`, `platform`) SELECT `game_name`, `release_year`, `genre`, `developer`, `publisher`, `platform` FROM `Games_Playing` WHERE game_id = %s;''',(game_id,))
+        cursor.execute('''DELETE FROM `Games_Playing` WHERE game_id = %s;''',(game_id,))
+        mysql.connection.commit()
+        cursor.close()
+            
+        return render_template("done.html")
+
+# route which adds selected data using game id from the owned table to the playing games table
+@add_game.route('/add_owned_game_done', methods = ['POST', 'GET'])
+def add_owned_game_done():
+    if request.method == 'GET':
+        return "error"
+     
+    if request.method == 'POST':
+        
+        game_id = request.form['game_id']
+
+        cursor = mysql.connection.cursor()
+        cursor.execute("USE database_games")
+        cursor.execute('''INSERT INTO `Games_Playing`(`game_name`, `release_year`, `genre`, `developer`, `publisher`, `platform`) SELECT `game_name`, `release_year`, `genre`, `developer`, `publisher`, `platform` FROM `Games_Owned` WHERE game_id = %s;''',(game_id,))
         mysql.connection.commit()
         cursor.close()
             
