@@ -46,5 +46,23 @@ def games_done():
 
         mysql.connection.commit()
         cursor.close()
+
+        return render_template("done.html")
+
+@add_game.route('/move_game_done', methods = ['POST', 'GET'])
+def move_done():
+    if request.method == 'GET':
+        return "error"
+     
+    if request.method == 'POST':
         
+        game_id = request.form['game_id']
+
+        cursor = mysql.connection.cursor()
+        cursor.execute("USE database_games")
+        cursor.execute('''INSERT INTO `Games_Owned`(`game_name`, `release_year`, `genre`, `developer`, `publisher`, `platform`) SELECT `game_name`, `release_year`, `genre`, `developer`, `publisher`, `platform` FROM `Games_Wishlist` WHERE game_id = %s;''',(game_id,))
+        cursor.execute('''DELETE FROM `Games_Wishlist` WHERE game_id = %s;''',(game_id,))
+        mysql.connection.commit()
+        cursor.close()
+            
         return render_template("done.html")
