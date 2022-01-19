@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
+# imports add_game blueprint from routes.py
+from routes import add_game
+# imports table blueprint from tables.py
+from tables import table
 
+# config for flask and mysql
 app = Flask(__name__)
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'root'
@@ -12,60 +17,21 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL()
 mysql.init_app(app)
 
-
+# render homepage
 @app.route('/')
 def index():
     return render_template("home.html")
 
-@app.route('/add_games')
-def games():
-    return render_template("add_games.html")
+# use add_game blueprint from import that displays pages
+app.register_blueprint(add_game)
 
-#use add_games form to insert data to database
-@app.route('/add_games_done', methods = ['POST', 'GET'])
-def games_done():
-    if request.method == 'GET':
-        return "error"
-     
-    if request.method == 'POST':
-        
-        game_id = request.form['game_id']
-        game_name = request.form['game_name']
-        release_year = request.form['release_year']
-        genre = request.form['genre']
-        developer = request.form['dev']
-        publisher = request.form['pub']
-        platform = request.form['platform']
-        own = request.form['own']
-        wish = request.form['wish']
-        play = request.form['play']
-        completed = request.form['comp']
+# use table blueprint from import that displays tables
+app.register_blueprint(table)
 
-        cursor = mysql.connection.cursor()
-        cursor.execute("USE database_games")
-        cursor.execute(''' INSERT INTO Games VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
-        if own == "1":
-            cursor.execute(''' INSERT INTO Games_Owned VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
-        if wish == "1":
-            cursor.execute(''' INSERT INTO Games_Wishlist VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
-        if play == "1":
-            cursor.execute(''' INSERT INTO Games_Playing VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
-        if completed == "1":
-            cursor.execute(''' INSERT INTO Games_Completed VALUES(%s,%s,%s,%s,%s,%s,%s)''',(game_id, game_name, release_year, genre, developer, publisher, platform))
 
-        mysql.connection.commit()
-        cursor.close()
-        
-        return render_template("done.html")
 
-@app.route('/owned_table')
-def owned():
-    cursor = mysql.connection.cursor()
-    cursor.execute("USE database_games")
-    cursor.execute(''' Select * From Games_Owned ''')
-    owned = cursor.fetchall()
-    return render_template('owned_table.html', title='Owned Games', owned=owned)
 
+# runs app on local host with debugging
 if __name__ == '__main__':
    app.run(host='0.0.0.0', debug=True)
 
