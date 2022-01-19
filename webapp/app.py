@@ -21,6 +21,9 @@ mysql.init_app(app)
 @app.route('/')
 def index():
     return render_template("home.html")
+@app.route('/home')
+def homepage():
+    return render_template("home.html")
 
 # use add_game blueprint from import that displays pages
 app.register_blueprint(add_game)
