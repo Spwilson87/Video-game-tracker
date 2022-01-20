@@ -13,7 +13,6 @@ pipeline {
             steps{
                 echo 'Test stage executed.'
                 sh 'python3 webapp/test_app.py'
-                sh 'python3 webapp/test_tables.py'
             }
         }
 
