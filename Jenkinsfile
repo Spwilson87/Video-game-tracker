@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-        stage ('stop app') {
+        stage ('deploy') {
             steps{
                 echo'Stop app has started'
                 sh 'docker-compose -f /var/lib/jenkins/workspace/DB_Games_dev/docker-compose.yml down'
