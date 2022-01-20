@@ -17,11 +17,7 @@ class FlaskTestCase(unittest.TestCase):
         statuscode = response.status_code
         self.assertEqual(statuscode, 200)
         
-    def test_add_game(self):
-        tester = app.test_client(self)
-        response = tester.get("/add_games")
-        statuscode = response.status_code
-        self.assertEqual(statuscode, 200)
+
 
     # check if content is html
     def test_home_content(self):
