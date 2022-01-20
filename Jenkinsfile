@@ -13,13 +13,10 @@ pipeline {
         }
 
         stage ('test') {
-            steps {
+            steps{
+                echo 'Test stage executed.'
                 sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
-            }
-            post {
-                always {
-                    junit 'test-reports/results.xml'
-                }
+                sh 'python3  -m unittest webapp/test_app.py'
             }
         }
 
