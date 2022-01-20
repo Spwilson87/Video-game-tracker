@@ -19,6 +19,7 @@ pipeline {
 
         stage ('deploy') {
             steps{
+                sh 'docker-compose -f /var/lib/jenkins/workspace/DB_Games_dev/docker-compose.yml down
                 echo 'Deploy stage executed.'
 
             }
