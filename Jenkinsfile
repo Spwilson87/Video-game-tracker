@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('build') {
             steps{
-                sh 'docker-compose -f /var/lib/jenkins/workspace/DB_Games_dev/docker-compose.yml up --build -d'
+                sh 'docker-compose -f /var/lib/jenkins/workspace/DB_Games2/docker-compose.yml up --build -d'
                 echo 'Build Stage Completed'
             }
         }
