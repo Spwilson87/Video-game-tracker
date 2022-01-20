@@ -12,7 +12,7 @@ pipeline {
         stage ('test') {
             steps{
                 echo 'Test stage executed.'
-                sh 'pip install flask
+                sh 'pip install flask'
                 sh 'python3 webapp/test_app.py'
             }
         }
