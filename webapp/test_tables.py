@@ -6,8 +6,8 @@ class FlaskTestCase(unittest.TestCase):
 
     #check for html response 200
     def test_owned_table(self):
-        # tester = app.test_client(self)
-        # response = tester.get("/owned_table")
+        tester = app.test_client(self)
+        response = tester.get("/owned_table")
         # self.assertTrue(b'game_id' in response.data)
         # self.assertTrue(b'game_name' in response.data)
         # self.assertTrue(b'release_year' in response.data)
