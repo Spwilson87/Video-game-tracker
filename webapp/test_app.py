@@ -23,7 +23,7 @@ class FlaskTestCase(unittest.TestCase):
     def test_home_content(self):
         tester = app.test_client(self)
         response = tester.get("/home")
-        self.assertRegexpMatches(response.content_type, "html")
+        self.assertRegex(response.content_type, "html")
 
     # check returned data
     def test_home_data(self):
