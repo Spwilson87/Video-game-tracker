@@ -13,10 +13,8 @@ pipeline {
         }
 
         stage ('test') {
-            steps{
-                echo 'Test stage executed.'
-                 steps {
-                sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_app.py'
+            steps {
+                sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
             }
             post {
                 always {
@@ -24,4 +22,8 @@ pipeline {
                 }
             }
         }
-            }
+
+
+
+
+  
