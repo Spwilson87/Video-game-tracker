@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 # imports add_game blueprint from routes.py
-from routes import add_game
+from routes import add_game, home
 # imports table blueprint from tables.py
 from tables import table
 
@@ -17,18 +17,13 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL()
 mysql.init_app(app)
 
-# render homepage
-@app.route('/')
-def index():
-    return render_template("home.html")
-@app.route('/home')
-def homepage():
-    return render_template("home.html")
+# calls home blueprint from routes
+app.register_blueprint(home)
 
-# use add_game blueprint from import that displays pages
+# calls add_game blueprint from routes
 app.register_blueprint(add_game)
 
-# use table blueprint from import that displays tables
+# calls table blueprint from tables
 app.register_blueprint(table)
 
 
