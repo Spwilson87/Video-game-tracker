@@ -13,8 +13,7 @@ pipeline {
             steps{
                 echo 'Test stage executed.'
                 sh 'pip install flask'
-                sh 'pip install flask-mysqldb'
-                sh 'python3 webapp/test_app.py'
+                sh 'python3  -m unittest webapp/test_app.py'
             }
         }
 
