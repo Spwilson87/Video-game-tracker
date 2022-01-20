@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask, render_template, request
 from flask_mysqldb import MySQL
 
+home = Blueprint('home', __name__)
 add_game = Blueprint('add_game', __name__)
 
 app = Flask(__name__)
@@ -8,9 +9,19 @@ app = Flask(__name__)
 mysql = MySQL()
 mysql.init_app(app)
 
+@home.route('/')
+def index():
+    return render_template("home.html")
+@home.route('/home')
+def homepage():
+    return render_template("home.html")
+
+
 @add_game.route('/add_games')
 def games():
     return render_template("add_games.html")
+
+ 
 
 #use add_games form to insert data to database
 @add_game.route('/add_games_done', methods = ['POST', 'GET'])
@@ -106,3 +117,4 @@ def add_owned_game_done():
         cursor.close()
             
         return render_template("done.html")
+
