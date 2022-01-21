@@ -1,0 +1,54 @@
+{% extends "table_base.html" %}
+{% block bar %}
+        <h1>Currently Playing</h1>
+    {% endblock %}
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>game_id</th>
+        <th>game_name</th>
+        <th>release_year</th>
+        <th>genre</th>
+        <th>developer</th>
+        <th>publisher</th>
+        <th>platform</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for play in play %}
+        <tr>
+          <td>{{ play.game_id }}</td>
+          <td>{{ play.game_name }}</td>
+          <td>{{ play.release_year }}</td>
+          <td>{{ play.genre }}</td>
+          <td>{{ play.developer }}</td>
+          <td>{{ play.publisher }}</td>
+          <td>{{ play.platform }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <form action="/move_playing_game_done" method = "POST">
+
+    <p>Enter Game ID to Move to Completed Games </p>
+    <p><input type = "integer" name = 'game_id' /></p>
+    <p><input type = "submit" value = "Submit" /></p>
+  </form>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({pageLength: 5,
+    filter: true,
+    deferRender: true,
+    scrollY: 200,
+    scrollCollapse: true,
+    scroller: true,
+    "searching": true,
+        
+      });
+    });
+  </script>
+{% endblock %}

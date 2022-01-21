@@ -1,24 +1,83 @@
 {% extends "base.html" %}
 {% block title %} Add_Game {% endblock %}
-
+{% block bar %}
+        <h1>Add Game</h1>
+    {% endblock %}
+<style>
+  select {
+    height: 30px;
+    width: 30%;
+    border: 1px solid #4CAF50;
+  }
+  p {
+    font-size: 14px;
+  }
+  </style>
   <body>
     {% block content %}
     <div class="container">
-      <img src="{{url_for('static', filename='turtle.jpg')}}" align="middle" />
-      <br>
-      <p>Enter Your Details<p></p>
+
+      <p>Enter Your Game Details<p></p>
     </div>
-      
+    
     <form action="/add_games_done" method = "POST">
-      <p>Enter Game Id As 0 <input type = "integer" name = 'game_id' /></p>
-      <p>Enter Game Name <input type = "text" name = 'game_name' /></p>
-      <p>Enter Release Year <input type = "integer" name = 'release_year' /></p>
-      <p>Enter Publisher ID <input type = "integer" name = 'pub_id' /></p>
-      <p>Enter Developer ID <input type = "integer" name = 'dev_id' /></p>
-      <p>Enter Platform ID <input type = "integer" name = 'platform_id' /></p>
-      <p>Enter Genre ID <input type = "integer" name = 'genre_id' /></p>
+      <p hidden> game id
+        <select class="select border " name="game_id">
+          <option value="0">0</option>
+          </select>
+
+      <p>Enter Game Name </p>
+      <p><input type = "text" name = 'game_name' /></p>
+      <p>Enter Release Year </p>
+      <p><input type = "integer" name = 'release_year' /></p>
+      <p>Enter Genre </p>
+      <p><input type = "text" name = 'genre' /></p>
+      <p>Enter Developer </p>
+      <p><input type = "text" name = 'dev' /></p>
+      <p>Enter Publisher </p>
+      <p><input type = "text" name = 'pub' /></p>
+      <p>Enter Platform</p>
+      <p><input type = "text" name = 'platform' /></p>
+      
+      <p>Do You Own This Game? 
+        <select class="select border " name="own">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Yes</option>
+        <option value="2">No</option>
+        
+      </select>
+      
+      <p>Do You Want To Add To Wishlist? 
+        <select class="select border " name="wish">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Yes</option>
+        <option value="2">No</option>
+        
+      </select>
+      <p>Are You In Playing This Game At The Moment? 
+        <select class="select border " name="play">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Yes</option>
+        <option value="2">No</option>
+        
+      </select>
+      <p>Have You Completed This Game? 
+        <select class="select border " name="comp">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Yes</option>
+        <option value="2">No</option>
+        
+      </select>
       <p><input type = "submit" value = "Submit" /></p>
     </form>
+    
+    
     {% endblock %}
+    <div class="w3-display-middle">
+      <p> {{ message }} </p>
+      <div style="text-align: center;">
+          <p><a href="/login">back</a></p>
+      </div>
+  </div>
   </body>
 </html>

@@ -1,0 +1,48 @@
+{% extends "table_base.html" %}
+{% block bar %}
+        <h1>Completed Games</h1>
+    {% endblock %}
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>game_id</th>
+        <th>game_name</th>
+        <th>release_year</th>
+        <th>genre</th>
+        <th>developer</th>
+        <th>publisher</th>
+        <th>platform</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for comp in comp %}
+        <tr>
+          <td>{{ comp.game_id }}</td>
+          <td>{{ comp.game_name }}</td>
+          <td>{{ comp.release_year }}</td>
+          <td>{{ comp.genre }}</td>
+          <td>{{ comp.developer }}</td>
+          <td>{{ comp.publisher }}</td>
+          <td>{{ comp.platform }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({pageLength: 10,
+    filter: true,
+    deferRender: true,
+    scrollY: 200,
+    scrollCollapse: true,
+    scroller: true,
+    "searching": true,
+        
+      });
+    });
+  </script>
+{% endblock %}

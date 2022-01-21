@@ -31,17 +31,43 @@
 <body>
     {% block img %}
     {% endblock %}
-{% block content %}{% endblock %}
 
-    <div class="w3-top" style="opacity: 0.5;">
-        <div class="ww3-bar w3-black">
-            <a href="/" class="w3-bar-item w3-button">Home</a>
-            <a href="/form" class="w3-bar-item w3-button">Form</a>
-            <a href="/register" class="w3-bar-item w3-button">Register</a>
-            <a href="/help" class="w3-bar-item w3-button">Help</a>
-        </div>
+
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+    <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+    <a href="/home" class="w3-bar-item w3-button">Home</a>
+    <a href="/add_games" class="w3-bar-item w3-button">Add new game</a>
+    <a href="/owned_table" class="w3-bar-item w3-button">Owned games</a>
+    <a href="/wishlist_table" class="w3-bar-item w3-button">Wishlist</a>
+    <a href="/playing_table" class="w3-bar-item w3-button">Currently playing</a>
+    <a href="/completed_table" class="w3-bar-item w3-button">Games completed</a>
+  </div>
+  
+  <!-- Page Content -->
+  <div class="w3-grey">
+    <button class="w3-button w3-grey  w3-xlarge" onclick="w3_open()">☰</button>
+    <div class="w3-container">
+    {% block bar %}
+        <h1>base</h1>
+    {% endblock %}
     </div>
+  </div>
+  
+  
+  
+  
+  <script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+  }
+  
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+  }
+  </script>
         
-        
+  {% block content %}{% endblock %}   
 </body>
 </html>
