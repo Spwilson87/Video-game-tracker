@@ -81,6 +81,7 @@ This is my risk assesment.
 
 
 ## My Application <a name="app"></a>
+I set up a virtual machine running linux unbuntu to write my applaction in.
 I wrote my application in python using flask and flask mysqldb utilising html and jinja so it can communicate with the back end python code.<br>
 it exposes port 5000<br>
 Wrote a dockerfile to build the app.<br>
@@ -197,6 +198,7 @@ These are the improvements i would like to add are as follows.
 * Create a page that shows a table of all the games entered in the system and allow a user to add to their own collection
 * Higher and more varied test coverage
 * get the ci/cd pipeline fully working to where i can push a change in code and it gets built by jenkins tested and deployed
+* Maybe use github actions in place of jenkins
 
 ## Author
 Simon Wilson
