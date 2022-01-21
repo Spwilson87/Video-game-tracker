@@ -19,7 +19,11 @@ Create a project which will demonstrate a culmination of all of the topics i hav
 * To utilise containers to host and deploy your application.
 * To create a continuous integration (CI)/continuous deployment (CD) pipeline that will automatically test, build and deploy your application.
 ## Time issue<a name="time"></a>
-I ran out of time due to an unprecedented amount disruption in the class where the tutor would stop for nearly an hour at a time to help one person(9 times out of 10 the issues where nothing to do with what we was doing) we was just left sitting there waiting, This was a daily occurence(which would equate to roughly 40hours, evidence in the class recordings). We also had a 2 days with no tutor so left to teach ourself, we swapped tutors numerous times an when they came in they had no idea what we was up to or even what we was ment to be learnin through the course. So there was so much more we could have learnt in this time. We also had to ask the tutor for 3 days to do our project, if we had not we either doing it our own free time if you had any(people working afterwards or have parental responsibilities), or try to work on it while the tutor was teaching us stuff in the background. We had to forego 3 days of learning azure cloud beacuse of the disruptions.
+I ran out of time due to an unprecedented amount disruption in the class where the tutor would stop for nearly an hour at a time to help one person(9 times out of 10 the issues where nothing to do with what we was doing) we was just left sitting there waiting. This was a daily occurence(which would equate to roughly 40hours, evidence in the class recordings).<br>
+
+We also had a 2 days with no tutor so left to teach ourself, we swapped tutors numerous times an when they came in they had no idea what we was up to or even what we was ment to be learnin through the course.<br>
+
+So there was so much more we could have learnt in this time. We also had to ask the tutor for 3 days to do our project, if we had not we either doing it our own free time if you had any(people working afterwards or have parental responsibilities), or try to work on it while the tutor was teaching us stuff in the background. We had to forego 3 days of learning azure cloud beacuse of the disruptions.
 
 ## Table of Contents
 
@@ -30,8 +34,9 @@ I ran out of time due to an unprecedented amount disruption in the class where t
 5. [Database](#data)
 6. [Testing](#test)
 7. [CI/CD Pipeline](#pipe)
-8. [Final app](#fin)
+8. [Final App](#fin)
 9. [Known Issues](#know)
+10. [Future Improvements](#futureimprovements)
 
 ## How I Approched This <a name="approach"></a>
 To acheive the objective I decided to create an game tracking app to allow a user to do the following:
@@ -168,8 +173,31 @@ It should consist of at least one manager node and one worker node. Neither of t
 I could not achive this as we had not been taught how to us the cloud, docker swarm or manager and worker nodes due to time issues. [SEE TIME ISSUE HERE](#time)
 I have done some research in my own time and have a little idea how to work this but need more time.
 
-### Final App <a name="fin"></a>
+## Final App <a name="fin"></a>
 My final iteration of the app has been merged from dev branch into the master branch.
+This is a video showing the app functioning.
 
-### Known Issues<a name="know"></a>
+## Known Issues<a name="know"></a>
+Due to time constraints [SEE TIME ISSUE HERE](#time)
+* tests are lacking there is not enough coverage of the app to pick up problems.
+* Jenkins does not do any real testing and also does not deploy.
+* app has not been deployed to docker swarm in the cloud
+* database needs a rework in regards to foriegn key and linking to each other
+* game_ids are not consistant between tables
+
+## Future Improvements <a name="futureimprovements"></a>
+These are the improvements i would like to add are as follows.
+* change the database layout to this
+
+* with this proposed database change i would change how games are allowed to added by the user, to where they select from a dropdown box which shows existing(publisher, developer, genre and platform) so they don't have to type them out, but also have an option to add a new(publisher, developer, genre and platform) if the one they want does not exsist
+* Add a option to edit games so spelling mistakes can be fixed.
+* Add a option to delete a game from a table and linked tables.
+* Overhaul the aesthetics of the front end so its more pleasing.
+* Create a login system for multiple users who will see there own data.
+* Create a page that shows a table of all the games entered in the system and allow a user to add to their own collection
+* Higher and more varied test coverage
+* get the ci/cd pipeline fully working to where i can push a change in code and it gets built by jenkins tested and deployed
+
+## Author
+Simon Wilson
 
