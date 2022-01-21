@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %} Play to comp {% endblock %}
+  <body>
+    {% block bar %}
+      
+    {% endblock %}
+    {% block content %}
+    <div class="container fixed">
+      <img src="{{url_for('static', filename='link.jpg')}}" align="middle" alt="" />
+      <br>
+      Your game has been moved from currently playing to completed
+    </div>
+    
+    {% endblock %}
+  </body>
+</html>
