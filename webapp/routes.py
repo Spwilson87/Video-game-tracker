@@ -78,7 +78,7 @@ def move_done():
         mysql.connection.commit()
         cursor.close()
             
-        return render_template("done.html")
+        return render_template("wish_to_own.html")
 
 # route which moves selected data using game id from the playing table to the completed games table, it then deletes the record from playing table
 
@@ -98,7 +98,7 @@ def move_playing_done():
         mysql.connection.commit()
         cursor.close()
             
-        return render_template("done.html")
+        return render_template("play_to_comp.html")
 
 # route which adds selected data using game id from the owned table to the playing games table
 @add_game.route('/add_owned_game_done', methods = ['POST', 'GET'])
@@ -116,5 +116,5 @@ def add_owned_game_done():
         mysql.connection.commit()
         cursor.close()
             
-        return render_template("done.html")
+        return render_template("own_to_play.html")
 
