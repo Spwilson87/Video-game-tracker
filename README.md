@@ -189,6 +189,8 @@ Due to time constraints [SEE TIME ISSUE HERE](#time)
 ## Future Improvements <a name="futureimprovements"></a>
 These are the improvements i would like to add are as follows.
 * change the database layout to this
+* ![Database ERD Update](https://user-images.githubusercontent.com/94057901/150542867-4f101493-9cc7-4218-a0e2-13bd4f9ec511.png)
+
 
 * with this proposed database change i would change how games are allowed to added by the user, to where they select from a dropdown box which shows existing(publisher, developer, genre and platform) so they don't have to type them out, but also have an option to add a new(publisher, developer, genre and platform) if the one they want does not exsist
 * Add a option to edit games so spelling mistakes can be fixed.
