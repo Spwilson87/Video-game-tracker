@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %} Wish to Own {% endblock %}
+  <body>
+    {% block bar %}
+      
+    {% endblock %}
+    {% block content %}
+    <div class="container fixed">
+      <img src="{{url_for('static', filename='link.jpg')}}" align="middle" alt="" />
+      <br>
+      Your game has been moved from wishlist to owned
+    </div>
+    
+    {% endblock %}
+  </body>
+</html>
