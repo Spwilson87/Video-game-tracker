@@ -26,9 +26,6 @@ app.register_blueprint(add_game)
 # calls table blueprint from tables
 app.register_blueprint(table)
 
-
-
-
 # runs app on local host with debugging
 if __name__ == '__main__':
    app.run(host='0.0.0.0', debug=True)
