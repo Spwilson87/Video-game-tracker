@@ -34,7 +34,7 @@ So there was so much more we could have learnt in this time. We also had to ask 
 5. [Database](#data)
 6. [Testing](#test)
 7. [CI/CD Pipeline](#pipe)
-8. [Final App](#fin)
+8. [Final App Video](#fin)
 9. [Known Issues](#know)
 10. [Future Improvements](#futureimprovements)
 
@@ -175,7 +175,7 @@ It should consist of at least one manager node and one worker node. Neither of t
 I could not achive this as we had not been taught how to us the cloud, docker swarm or manager and worker nodes due to time issues. [SEE TIME ISSUE HERE](#time)
 I have done some research in my own time and have a little idea how to work this but need more time.
 
-## Final App <a name="fin"></a>
+## Final App Video <a name="fin"></a>
 My final iteration of the app has been merged from dev branch into the master branch.
 This is a video showing the app functioning.
 https://drive.google.com/file/d/1KCoVI5pN9ATKVFaxjF6WF3ORHEqAkgLG/view?usp=sharing
