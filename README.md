@@ -78,6 +78,7 @@ Made use of a dev branch in git created a quick flask app to display hello world
 
 ## Risk assesment <a name="risk"></a>
 This is my risk assesment.
+![risk assesment](https://user-images.githubusercontent.com/94057901/150544502-5698fdfd-f475-4aee-87fb-bf585307c20e.png)
 
 
 ## My Application <a name="app"></a>
