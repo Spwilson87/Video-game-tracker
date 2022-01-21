@@ -1,7 +1,7 @@
 # db_games Created for sifa project
 # Games Tracker
 
-### Brief
+## Brief
 Create a project which will demonstrate a culmination of all of the topics i have covered in my training. It will involve the following concepts and technologies:
 * Project Management
 * Python Fundamentals
@@ -14,10 +14,12 @@ Create a project which will demonstrate a culmination of all of the topics i hav
 * Cloud Fundamentals
 * Containerisation
 
-### Objective
+## Objective
 * To create a web application that integrates with a database and demonstrates CRUD functionality.
 * To utilise containers to host and deploy your application.
 * To create a continuous integration (CI)/continuous deployment (CD) pipeline that will automatically test, build and deploy your application.
+## Time issue<a name="time"></a>
+I ran out of time due to an unprecedented amount disruption in the class where the tutor would stop for nearly an hour at a time to help one person(9 times out of 10 the issues where nothing to do with what we was doing) we was just left sitting there waiting, This was a daily occurence(which would equate to roughly 40hours, evidence in the class recordings). We also had a 2 days with no tutor so left to teach ourself, we swapped tutors numerous times an when they came in they had no idea what we was up to or even what we was ment to be learnin through the course. So there was so much more we could have learnt in this time. We also had to ask the tutor for 3 days to do our project, if we had not we either doing it our own free time if you had any(people working afterwards or have parental responsibilities), or try to work on it while the tutor was teaching us stuff in the background. We had to forego 3 days of learning azure cloud beacuse of the disruptions.
 
 ## Table of Contents
 
@@ -28,8 +30,10 @@ Create a project which will demonstrate a culmination of all of the topics i hav
 5. [Database](#data)
 6. [Testing](#test)
 7. [CI/CD Pipeline](#pipe)
+8. [Final app](#fin)
+9. [Known Issues](#know)
 
-### How I Approched This <a name="approach"></a>
+## How I Approched This <a name="approach"></a>
 To acheive the objective I decided to create an game tracking app to allow a user to do the following:
 
 * Store game details(satisfy 'Create')
@@ -65,13 +69,13 @@ I included the story points estimates on each item within jira
 ![story point](https://user-images.githubusercontent.com/94057901/150414622-ef7bbf0f-5a6f-4507-ba92-d3597d0369d8.png)
 
 ## Version Control
-Made use of a dev branch in git which i pushed up to my github repo as i made changes and progress. When i was satisfied the app was working i the merged it into master.
+Made use of a dev branch in git created a quick flask app to display hello world as my start on the master branch, i then created a dev branch from which to work on, i pushed up to my github repo dev branch as i made changes and progress. When i was satisfied the app was working i the merged it into master.
 
-### Risk assesment <a name="risk"></a>
+## Risk assesment <a name="risk"></a>
 This is my risk assesment.
 
 
-### My Application <a name="app"></a>
+## My Application <a name="app"></a>
 I wrote my application in python using flask and flask mysqldb utilising html and jinja so it can communicate with the back end python code.<br>
 it exposes port 5000<br>
 Wrote a dockerfile to build the app.<br>
@@ -80,7 +84,7 @@ Then wrote a docker-compose.yml which created multiple containers consisting of<
 * php my admin on port 9080:880 which links to mysql, purely for convenience so i can see my database is working quicker.
 * It also builds my app which links to mysql image and phpmyadmin image
 
-## Application design
+### Application design
 The front end of this application is simple at this stage. All the tables are searchable will auto create new table pages as they get populated and can be set to ascend or descend on each row.
 
 User Brought to this page when they access the app.<br>
@@ -108,19 +112,19 @@ This is where user can see the currently playing table, where you can also enter
 This is where the user can view games completed table.<br>
 ![app comp table](https://user-images.githubusercontent.com/94057901/150519314-08d952b0-a5f4-4055-b6eb-963e179ea66d.png)
 
-### Database <a name="data"></a>
+## Database <a name="data"></a>
 Below is an entity relationship diagram showing the structure of the database<br>
 ![erd](https://user-images.githubusercontent.com/94057901/150520118-eff1aeb6-d413-4155-af72-3c711c0f9393.png)
 
 database is using mysql and flask-mysqldb.
 
-### Testing <a name="test"></a>
+## Testing <a name="test"></a>
 Used unittest to run test on the application, which i had to research myself as tutor would not explain how we could incorperate them in our app. I wanted to run more test but did not have the time or knowledge. I wanted to incorparate pytest however we was not showing this and due to time constraints i didn't have time to research how.<br>
 These test check the html reposne code for pages and data in body.
 ![unittest](https://user-images.githubusercontent.com/94057901/150521520-83fb5071-df67-4491-bb0e-ce66c08130d5.png)
 
-### CI/CD Pipeline <a name="pipe"></a>
-## his was our pipline breif
+## CI/CD Pipeline <a name="pipe"></a>
+## This was our pipline breif
 You are also tasked with creating a CI/CD pipeline that will automate the integration and deployment of new code.<br>
 The automation server you must use is Jenkins.<br>
 You have freedom to organise the pipeline however you see fit, but the pipeline must achieve the following<br>
@@ -128,7 +132,7 @@ You have freedom to organise the pipeline however you see fit, but the pipeline 
 * Build the Docker images.
 * Push the Docker images to a registry.
 * Deploy to a Swarm.
-## Issuses working towards this brie
+## Issuses working towards this brief
 * I have never used a ci/cd pipline before nor jenkins
 * we was only showed how to set up jenkins and get it to retrive a github repo manually
 * we was not showed how to use jenkins to run automaticlly in any way
@@ -145,7 +149,27 @@ This is my jenkins pipleine it will detect a push to github from my local machin
 * then it will run my unittest
 * then it wil stop the containers using docker-compose down.
 
+To even acheive this i had issues to work through as jenkins was on my local host, after resarch i ended up using webhookrelay, which let me set up a relay between jenkins and github, so that when there is a github push the relay will pick it up and send it to jenkins which then runs a build.
+
+![webhook relay](https://user-images.githubusercontent.com/94057901/150525958-2fdfb73f-46b1-4528-8748-ff48245317d3.png)
 
 
+I was unable to figure out what i could test, tried to do some sql commands to show database was connected but could not figure it out in the time we had.<br>
+I Could not implement a push docker images to a registry as i ran out of time due [SEE TIME ISSUE HERE](#time)
 
+This shows that i have tried numerous ways to get jenkins to do what i needed.
+![jenkins build history](https://user-images.githubusercontent.com/94057901/150528551-68acb741-d090-4fce-836f-b7ad89f2fa1b.png)
+
+## Deployment
+## Brief
+The application should be deployed to a Docker Swarm hosted in the cloud.<br>
+It should consist of at least one manager node and one worker node. Neither of these nodes should be the Jenkins build server.
+
+I could not achive this as we had not been taught how to us the cloud, docker swarm or manager and worker nodes due to time issues. [SEE TIME ISSUE HERE](#time)
+I have done some research in my own time and have a little idea how to work this but need more time.
+
+### Final App <a name="fin"></a>
+My final iteration of the app has been merged from dev branch into the master branch.
+
+### Known Issues<a name="know"></a>
 
