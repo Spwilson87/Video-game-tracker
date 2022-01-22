@@ -175,6 +175,12 @@ It should consist of at least one manager node and one worker node. Neither of t
 I could not achive this as we had not been taught how to us the cloud, docker swarm or manager and worker nodes due to time issues. [SEE TIME ISSUE HERE](#time)
 I have done some research in my own time and have a little idea how to work this but need more time.
 
+## Pipline Illustration
+This is a visualization of my pipline
+
+![CI Pipline](https://user-images.githubusercontent.com/94057901/150648872-9f69666c-75dc-4eb3-940d-d18accb55b47.png)
+
+
 ## Final App Video <a name="fin"></a>
 My final iteration of the app has been merged from dev branch into the master branch.
 This is a video showing the app functioning.
@@ -195,6 +201,7 @@ These are the improvements i would like to add are as follows.
 
 
 * with this proposed database change i would change how games are allowed to added by the user, to where they select from a dropdown box which shows existing(publisher, developer, genre and platform) so they don't have to type them out, but also have an option to add a new(publisher, developer, genre and platform) if the one they want does not exsist
+* add secret keys
 * Add a option to edit games so spelling mistakes can be fixed.
 * Add a option to delete a game from a table and linked tables.
 * Overhaul the aesthetics of the front end so its more pleasing.
