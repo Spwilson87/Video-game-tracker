@@ -1,4 +1,4 @@
-# db_games Created for sifa project
+# Video Game Tracker for sifa project
 # Games Tracker
 
 ## Brief
